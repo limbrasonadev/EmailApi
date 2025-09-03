@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome - SendingEmailAPI</title>
+  <style>
+    :root {
+      --red: #b91c1c;
+      --red-hover: #f12020;
+      --background: #fff5f5;
+      --font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--background);
+      font-family: var(--font-family);
+      flex-direction: column;
+    }
+
+    .message, .start-btn {
+      font-size: 2rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+    }
+
+    /* Typing sa Word */
+    .typing {
+      color: var(--red);
+      border-right: 3px solid var(--red);
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(26) forwards, blink 0.7s step-end infinite alternate;
+      opacity: 1; 
+      width: 0; 
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 26ch; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: var(--red); }
+    }
+
+    .fade-out {
+      animation: fadeOut 1.2s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInScale 1s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    button.start-btn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--red);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      transform-origin: center;
+      box-shadow: 0 4px 6px rgba(185, 28, 28, 0.3);
+    }
+
+    button.start-btn:hover,
+    button.start-btn:focus {
+      transform: scale(1.1);
+      background-color: var(--red-hover);
+      outline: none;
+      box-shadow: 0 8px 15px rgba(241, 32, 32, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="message typing" aria-live="polite" aria-atomic="true">Welcome to SendingEmailAPI</div>
+  <button class="start-btn" type="button" tabindex="0">Start</button>
+
+  <script>
+    const message = document.querySelector('.message');
+    const button = document.querySelector('.start-btn');
+
+    button.style.opacity = 0;
+
+    setTimeout(() => {
+      message.classList.add('fade-out');
+
+      setTimeout(() => {
+        message.style.display = 'none';
+        button.classList.add('fade-in');
+        button.style.opacity = 1;
+        button.focus();
+      }, 1200);
+    }, 4000);
+
+    button.addEventListener('click', () => {
+      window.location.href = 'sendemail_form.php';
+    });
+  </script>
+</body>
+</html>
