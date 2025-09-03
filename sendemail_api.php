@@ -32,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "subject" => $subject
         ]],
         "from" => [
-            "email" => "ehliforeducation@gmail.com",
-            "name"  => "SEND-EMAIL-API-GROUP"
+            "email" => "ehliforeducation@gmail.com", // Your Verify Account in SendGrid
+            "name"  => "SEND-EMAIL-API-GROUP" // Your name in Sending Email
         ],
         "content" => [[
             "type"  => "text/plain",
@@ -72,6 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(405);
     echo json_encode([
         "success" => false,
-        "error"   => "Please use POST method."
+        "error"   => "Please use POST method." 
     ]);
 }
