@@ -6,13 +6,13 @@ require __DIR__ . '/vendor/autoload.php';
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    $apiKey = $_ENV['APIKEY'] ?? null;
+    $apiKey = $_ENV['APIKEY'] ?? null; // Should make an .env then write like this APIKEY=yourAPIKEY in sendgrid
     
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jsonInput = json_decode(file_get_contents("php://input"), true);
 
     $to = $jsonInput["to"] ?? ($_POST["to"] ?? null);
-    $subject = $jsonInput["subject"] ?? ($_POST["subject"] ?? null);
+    $subject = $jsonInput["subject"] ?? ($_POST["subject"] ?? null);    
     $message = $jsonInput["message"] ?? ($_POST["message"] ?? null);
 
     if (!$to || !$subject || !$message) {
@@ -33,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ]
         ],
         "from" => [
-            "email" => "ehliforeducation@gmail.com",
-            "name"  => "SEND-EMAIL-API-GROUP"
+            "email" => "ehliforeducation@gmail.com", // put your verify gmail here in sendgrid
+            "name"  => "SEND-EMAIL-API-GROUP" // name of your email if the receiver received your email
         ],
         "content" => [
             [
