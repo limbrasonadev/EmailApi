@@ -32,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "subject" => $subject
         ]],
         "from" => [
-            "email" => "ehliforeducation@gmail.com", // Your Verify Account in SendGrid
-            "name"  => "SEND-EMAIL-API-GROUP" // Your name in Sending Email
+            "email" => "ehliforeducation@gmail.com", // Input your Verify Account in SendGrid
+            "name"  => "SEND-EMAIL-API-GROUP" // Input your name in Sending Email
         ],
         "content" => [[
             "type"  => "text/plain",
